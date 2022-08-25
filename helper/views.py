@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets 
+from googletrans import Translator, constants
 # Create your views here.
 
 from .models import ProfileUser,Schemes,VolunteerProfile,AssistiveAids
@@ -10,8 +11,25 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
 
 class SchemesViewSet(viewsets.ModelViewSet):
-    queryset = Schemes.objects.all()
+
     serializer_class = SchemesSerializer
+    def get_queryset(self):
+        queryset = Schemes.objects.all()
+        lang = self.request.query_params.get('lang')
+        if(lang):
+            for scheme in queryset:
+                scheme.scheme_name = Translator().translate(scheme.scheme_name, lang).text
+                scheme.state = Translator().translate(scheme.state, lang).text
+                scheme.disability_benefits_criteria = Translator().translate(scheme.disability_benefits_criteria, lang).text
+                scheme.benefit_types = Translator().translate(scheme.benefit_types, lang).text
+                scheme.summary = Translator().translate(scheme.summary, lang).text
+                sh = ""
+                scheme.highlights = scheme.highlights.split('. ')
+                for idx, highlight in enumerate(scheme.highlights):
+                    sh += Translator().translate(highlight, lang).text + "#"
+                scheme.highlights = sh
+        return queryset
+    queryset = Schemes.objects.all()
 
 
 class VolunteerProfileViewSet(viewsets.ModelViewSet):
@@ -19,7 +37,6 @@ class VolunteerProfileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = VolunteerProfile.objects.all()
         city = self.request.query_params.get('city')
-        print("city", city)
         if city is not None:
             queryset = queryset.filter(city=city)
         return queryset

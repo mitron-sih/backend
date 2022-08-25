@@ -16,9 +16,7 @@ def getDisabilityTypes():
         ("10", "Locomotor Disability")
     ]
 
-class ProfileUser(models.Model):
-
-    
+class ProfileUser(models.Model):    
 
     first_name = models.CharField(max_length = 25)
     middle_name = models.CharField(max_length = 25)
@@ -74,7 +72,7 @@ class VolunteerProfile(models.Model):
     phone=models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return self.first_name
 
 class AssistiveAids(models.Model):
     name=models.CharField(max_length=200)
