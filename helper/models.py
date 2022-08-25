@@ -51,8 +51,8 @@ class Schemes(models.Model):
     disability_benefits_criteria = models.CharField(max_length = 100)
     benefit_types = models.CharField(max_length = 100)
     document_link = models.URLField(max_length = 200)
-    summary = models.CharField(max_length=500)
-    highlights = models.CharField(max_length=500)
+    summary = models.CharField(max_length=2000)
+    highlights = models.CharField(max_length=5000)
     disability_type = models.CharField(max_length = 20, choices = getDisabilityTypes(), default = '1')
     
 

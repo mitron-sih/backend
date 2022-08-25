@@ -25,7 +25,8 @@ SECRET_KEY = "django-insecure-kxj60-to3b5oy7&s*-7mtr_9m1@um@$^0i$+#xl4z%xjn1-ij2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io', '*']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'rest_framework',
     "helper.apps.HelperConfig",
+    'corsheaders',
     
 ]
 REST_FRAMEWORK = {
@@ -55,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "disability.urls"
