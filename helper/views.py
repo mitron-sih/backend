@@ -15,10 +15,18 @@ class SchemesViewSet(viewsets.ModelViewSet):
 
 
 class VolunteerProfileViewSet(viewsets.ModelViewSet):
-    queryset = VolunteerProfile.objects.all()
     serializer_class = VolunteerProfileSerializer
+    def get_queryset(self):
+        queryset = VolunteerProfile.objects.all()
+        city = self.request.query_params.get('city')
+        print("city", city)
+        if city is not None:
+            queryset = queryset.filter(city=city)
+        return queryset
+
+    queryset = VolunteerProfile.objects.all()
+    
 
 class AssistiveAidsViewSet(viewsets.ModelViewSet):
     queryset=AssistiveAids.objects.all()
     serializer_class=AssistiveAidsSerializer
-
