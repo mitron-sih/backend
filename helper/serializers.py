@@ -5,7 +5,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProfileUser
-        fields = ('id', 'first_name', 'middle_name', 'last_name', 'address_line_1', 'address_line_2', 'city', 'state', 'pin_code', 'email', 'password', 'phone','disability_type', 'udid', 'caregiver_first_name', 'caregiver_middle_name', 'caregiver_last_name', 'caregiver_phone', 'caregiver_email')
+        fields = ('id', 'first_name', 'last_name', 'address_line_1', 'city', 'state', 'pin_code', 'email', 'password', 'phone','disability_type', 'udid', 'caregiver_first_name', 'caregiver_last_name', 'caregiver_phone', 'caregiver_email')
 
 class SchemesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,7 +15,7 @@ class SchemesSerializer(serializers.ModelSerializer):
 class VolunteerProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = VolunteerProfile
-        fields = ('id', 'first_name', 'middle_name', 'last_name', 'address_line_1', 'address_line_2', 'city', 'state', 'pin_code', 'email', 'phone')
+        fields = ('id', 'first_name', 'last_name', 'address_line_1', 'city', 'state', 'pin_code', 'email', 'phone', 'aadhar_number')
 
 class AssistiveAidsSerializer(serializers.ModelSerializer):
     class Meta:
