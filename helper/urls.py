@@ -10,6 +10,8 @@ router.register(r'user',views.ProfileViewSet)
 router.register(r'schemes',views.SchemesViewSet)
 router.register(r'volunteer',views.VolunteerProfileViewSet)
 router.register(r'aids',views.AssistiveAidsViewSet)
+router.register(r'userLogin',views.UserLoginViewset)
+router.register(r'volunteerLogin',views.VolunteerLoginViewset)
 # router.register('user',ProfileViewSet,base_name='users')
 urlpatterns = router.urls
 # path('scheme<int:pk>/',DetailedListSchemes.as_view()),

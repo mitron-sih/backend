@@ -16,6 +16,9 @@ class SchemesViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = Schemes.objects.all()
         lang = self.request.query_params.get('lang')
+        disability_type = self.request.query_params.get('dt')
+        if(disability_type):
+            queryset = queryset.filter(disability_type=disability_type)
         if(lang):
             for scheme in queryset:
                 scheme.scheme_name = Translator().translate(scheme.scheme_name, lang).text
@@ -47,3 +50,27 @@ class VolunteerProfileViewSet(viewsets.ModelViewSet):
 class AssistiveAidsViewSet(viewsets.ModelViewSet):
     queryset=AssistiveAids.objects.all()
     serializer_class=AssistiveAidsSerializer
+
+class UserLoginViewset(viewsets.ModelViewSet):
+    queryset=ProfileUser.objects.all()
+    serializer_class = ProfileSerializer
+    def get_queryset(self):
+        queryset = ProfileUser.objects.all()
+        email = self.request.query_params.get('email')
+        password = self.request.query_params.get('password')
+        if email and password:
+            queryset = queryset.filter(email=email)
+            queryset = queryset.filter(password=password)
+        return queryset
+
+class VolunteerLoginViewset(viewsets.ModelViewSet):
+    queryset=VolunteerProfile.objects.all()
+    serializer_class = VolunteerProfileSerializer
+    def get_queryset(self):
+        queryset = VolunteerProfile.objects.all()
+        email = self.request.query_params.get('email')
+        password = self.request.query_params.get('password')
+        if email and password:
+            queryset = queryset.filter(email=email)
+            queryset = queryset.filter(password=password)
+        return queryset

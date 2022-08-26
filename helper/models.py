@@ -28,10 +28,6 @@ class ProfileUser(models.Model):
     password = models.CharField(max_length = 30)
     disability_type = models.CharField(max_length = 20, choices = getDisabilityTypes(), default = '1')
     udid = models.CharField(max_length = 50)
-    caregiver_first_name = models.CharField(max_length = 25, blank=True)
-    caregiver_last_name = models.CharField(max_length = 25, blank=True)
-    caregiver_phone = models.IntegerField(blank=True)
-    caregiver_email = models.EmailField(max_length = 254, blank=True)
     
     def __str__(self):
         return self.name

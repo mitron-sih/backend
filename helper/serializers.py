@@ -5,7 +5,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ProfileUser
-        fields = ('id', 'name', 'address', 'city', 'state', 'pin_code', 'email', 'password', 'phone','disability_type', 'udid', 'caregiver_first_name', 'caregiver_last_name', 'caregiver_phone', 'caregiver_email')
+        fields = ('id', 'name', 'address', 'city', 'state', 'pin_code', 'email', 'password', 'phone','disability_type', 'udid')
 
 class SchemesSerializer(serializers.ModelSerializer):
     class Meta:
