@@ -31,6 +31,14 @@ class SchemesViewSet(viewsets.ModelViewSet):
                 for idx, highlight in enumerate(scheme.highlights):
                     sh += Translator().translate(highlight, lang).text + "#"
                 scheme.highlights = sh
+        else:
+            for scheme in queryset:
+                scheme.highlights = scheme.highlights.split('. ')
+                sh=""
+                for idx, highlight in enumerate(scheme.highlights):
+                    sh += highlight + "#"
+                scheme.highlights = sh
+
         return queryset
     queryset = Schemes.objects.all()
 
