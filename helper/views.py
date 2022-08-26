@@ -19,7 +19,7 @@ class SchemesViewSet(viewsets.ModelViewSet):
         disability_type = self.request.query_params.get('dt')
         if(disability_type):
             queryset = queryset.filter(disability_type=disability_type)
-        if(lang):
+        if(lang and lang != 'en'):
             for scheme in queryset:
                 scheme.scheme_name = Translator().translate(scheme.scheme_name, lang).text
                 scheme.state = Translator().translate(scheme.state, lang).text

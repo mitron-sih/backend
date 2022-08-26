@@ -30,4 +30,4 @@ class ProductsSerializer(serializers.ModelSerializer):
 class RequestedProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = RequestedProducts
-        fields = ('product_name', 'user_name', 'price', 'udid')
+        fields = ('id', 'product_name', 'user_name', 'price', 'udid')
