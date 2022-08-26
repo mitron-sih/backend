@@ -3,8 +3,8 @@ from rest_framework import viewsets
 from googletrans import Translator, constants
 # Create your views here.
 
-from .models import ProfileUser,Schemes,VolunteerProfile,AssistiveAids
-from .serializers import ProfileSerializer,SchemesSerializer,VolunteerProfileSerializer,AssistiveAidsSerializer
+from .models import ProfileUser,Schemes,VolunteerProfile,AssistiveAids, Products, RequestedProducts
+from .serializers import ProfileSerializer,SchemesSerializer,VolunteerProfileSerializer,AssistiveAidsSerializer, ProductsSerializer, RequestedProductsSerializer
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = ProfileUser.objects.all()
     serializer_class = ProfileSerializer
@@ -74,3 +74,10 @@ class VolunteerLoginViewset(viewsets.ModelViewSet):
             queryset = queryset.filter(email=email)
             queryset = queryset.filter(password=password)
         return queryset
+
+class ProductsViewset(viewsets.ModelViewSet):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializer
+class RequestedProductsViewset(viewsets.ModelViewSet):
+    queryset = RequestedProducts.objects.all()
+    serializer_class = RequestedProductsSerializer

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ProfileUser, Schemes, VolunteerProfile, AssistiveAids
+from .models import ProfileUser, Schemes, VolunteerProfile, AssistiveAids, Products, RequestedProducts
 
 class ProfileSerializer(serializers.ModelSerializer):
 
@@ -21,3 +21,13 @@ class AssistiveAidsSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssistiveAids
         fields = ('id', 'name', 'price','vendor','location','disability_type')
+
+class ProductsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Products
+        fields = ('product_name', 'price')
+
+class RequestedProductsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequestedProducts
+        fields = ('product_name', 'user_name', 'price', 'udid')

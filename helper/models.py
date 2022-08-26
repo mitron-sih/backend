@@ -73,3 +73,20 @@ class AssistiveAids(models.Model):
     
     def __str__(self):
         return self.name
+
+
+class Products(models.Model):
+    product_name=models.CharField(max_length=200)
+    price=models.IntegerField()
+    
+    def __str__(self):
+        return self.product_name
+
+class RequestedProducts(models.Model):
+    product_name=models.CharField(max_length=200)
+    user_name=models.CharField(max_length=200)
+    price=models.IntegerField()
+    udid=models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.product_name
