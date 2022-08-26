@@ -18,9 +18,8 @@ def getDisabilityTypes():
 
 class ProfileUser(models.Model):    
 
-    first_name = models.CharField(max_length = 25)
-    last_name = models.CharField(max_length = 25)
-    address_line_1 = models.CharField(max_length = 150)
+    name = models.CharField(max_length = 50)
+    address = models.CharField(max_length = 150)
     city = models.CharField(max_length = 50)
     state = models.CharField(max_length = 50)
     pin_code = models.IntegerField()
@@ -29,10 +28,10 @@ class ProfileUser(models.Model):
     password = models.CharField(max_length = 30)
     disability_type = models.CharField(max_length = 20, choices = getDisabilityTypes(), default = '1')
     udid = models.CharField(max_length = 50)
-    caregiver_first_name = models.CharField(max_length = 25)
-    caregiver_last_name = models.CharField(max_length = 25)
-    caregiver_phone = models.IntegerField()
-    caregiver_email = models.EmailField(max_length = 254)
+    caregiver_first_name = models.CharField(max_length = 25, blank=True)
+    caregiver_last_name = models.CharField(max_length = 25, blank=True)
+    caregiver_phone = models.IntegerField(blank=True)
+    caregiver_email = models.EmailField(max_length = 254, blank=True)
     
     def __str__(self):
         return self.name
@@ -62,9 +61,8 @@ class VolunteerProfile(models.Model):
     city = models.CharField(max_length = 50)
     state = models.CharField(max_length = 50)
     pin_code = models.IntegerField()
-    phone = models.IntegerField()
     email = models.EmailField(max_length = 254)
-    phone=models.IntegerField()
+    password = models.CharField(max_length = 100)
     aadhar_number=models.CharField(max_length=12)
 
     def __str__(self):

@@ -36,9 +36,9 @@ class VolunteerProfileViewSet(viewsets.ModelViewSet):
     serializer_class = VolunteerProfileSerializer
     def get_queryset(self):
         queryset = VolunteerProfile.objects.all()
-        city = self.request.query_params.get('city')
-        if city is not None:
-            queryset = queryset.filter(city=city)
+        pin_code = self.request.query_params.get('pin_code')
+        if pin_code is not None:
+            queryset = queryset.filter(pin_code=pin_code)
         return queryset
 
     queryset = VolunteerProfile.objects.all()
